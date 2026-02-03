@@ -8,7 +8,8 @@ import {
   Building2,
   Calendar,
   LogOut,
-  BarChart3
+  BarChart3,
+  FileText
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -38,6 +39,7 @@ import {
   type Benchmark,
   type AIRecommendation,
 } from "@/lib/mockParser";
+import { generateFinancialReport } from "@/lib/pdfReportGenerator";
 import type { User } from "@supabase/supabase-js";
 
 export default function Dashboard() {
@@ -195,10 +197,27 @@ export default function Dashboard() {
     await supabase.auth.signOut();
   };
 
+  const handleDownloadPDF = () => {
+    if (!report || !metrics || !benchmark) return;
+    
+    generateFinancialReport({
+      companyName: user?.email?.split("@")[0] || "Firma",
+      report,
+      metrics,
+      benchmark,
+      recommendations,
+    });
+    
+    toast({
+      title: "Raport wygenerowany!",
+      description: "Twój raport PDF został pobrany.",
+    });
+  };
+
   if (isLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-background">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-emerald-500" />
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary" />
       </div>
     );
   }
@@ -222,8 +241,8 @@ export default function Dashboard() {
       <header className="border-b bg-card">
         <div className="container flex items-center justify-between h-16">
           <div className="flex items-center gap-3">
-            <div className="rounded-lg bg-emerald-500/10 p-2">
-              <BarChart3 className="h-6 w-6 text-emerald-500" />
+            <div className="rounded-lg bg-primary/10 p-2">
+              <BarChart3 className="h-6 w-6 text-primary" />
             </div>
             <div>
               <h1 className="font-semibold text-foreground">SmartController AI</h1>
@@ -273,10 +292,19 @@ export default function Dashboard() {
                 <span className="text-sm text-muted-foreground">Przychód:</span>
                 <span className="text-sm font-medium">{formatCurrency(report.revenue)}</span>
               </div>
+              <div className="flex items-center gap-2 ml-auto">
               <Button
                 variant="outline"
                 size="sm"
-                className="ml-auto"
+                onClick={handleDownloadPDF}
+                className="gap-2"
+              >
+                <FileText className="h-4 w-4" />
+                Pobierz raport PDF
+              </Button>
+              <Button
+                variant="outline"
+                size="sm"
                 onClick={() => {
                   setHasData(false);
                   setReport(null);
@@ -285,6 +313,7 @@ export default function Dashboard() {
               >
                 Wgraj nowy plik
               </Button>
+              </div>
             </div>
 
             {/* KPI Cards */}
@@ -405,9 +434,9 @@ export default function Dashboard() {
               <p className="text-sm text-muted-foreground mb-3">
                 Szczegółowa analiza Twoich danych z rekomendacjami eksperta.
               </p>
-              <p className="text-2xl font-bold text-emerald-500">299 PLN</p>
+              <p className="text-2xl font-bold text-primary">299 PLN</p>
             </div>
-            <Button className="w-full bg-emerald-500 hover:bg-emerald-600">
+            <Button className="w-full">
               Wybierz termin
             </Button>
             <p className="text-xs text-center text-muted-foreground">
