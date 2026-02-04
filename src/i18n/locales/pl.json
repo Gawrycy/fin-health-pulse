@@ -1,0 +1,215 @@
+{
+  "common": {
+    "loading": "Ładowanie...",
+    "save": "Zapisz",
+    "cancel": "Anuluj",
+    "delete": "Usuń",
+    "edit": "Edytuj",
+    "add": "Dodaj",
+    "search": "Szukaj",
+    "actions": "Akcje",
+    "status": "Status",
+    "active": "Aktywny",
+    "inactive": "Nieaktywny",
+    "yes": "Tak",
+    "no": "Nie",
+    "confirm": "Potwierdź",
+    "back": "Wstecz",
+    "next": "Dalej",
+    "submit": "Wyślij",
+    "error": "Błąd",
+    "success": "Sukces",
+    "warning": "Ostrzeżenie",
+    "close": "Zamknij",
+    "created": "Utworzono",
+    "updated": "Zaktualizowano",
+    "name": "Nazwa",
+    "email": "Email",
+    "role": "Rola",
+    "language": "Język",
+    "settings": "Ustawienia",
+    "logout": "Wyloguj",
+    "login": "Zaloguj",
+    "register": "Zarejestruj"
+  },
+  "nav": {
+    "home": "Strona główna",
+    "dashboard": "Panel",
+    "admin": "Portal Administratora",
+    "clients": "Klienci",
+    "plans": "Plany subskrypcyjne",
+    "staff": "Zarządzanie personelem",
+    "portalSettings": "Ustawienia portalu",
+    "organizations": "Organizacje",
+    "invoices": "Faktury",
+    "features": "Moduły funkcjonalne"
+  },
+  "auth": {
+    "signIn": "Zaloguj się",
+    "signUp": "Zarejestruj się",
+    "signOut": "Wyloguj się",
+    "emailPlaceholder": "Wprowadź swój email",
+    "passwordPlaceholder": "Wprowadź hasło",
+    "forgotPassword": "Zapomniałeś hasła?",
+    "noAccount": "Nie masz konta?",
+    "hasAccount": "Masz już konto?",
+    "welcomeBack": "Witaj ponownie",
+    "createAccount": "Utwórz konto"
+  },
+  "admin": {
+    "title": "Portal Administratora",
+    "subtitle": "Zarządzaj platformą, klientami i subskrypcjami",
+    "dashboard": {
+      "title": "Przegląd",
+      "totalClients": "Łącznie klientów",
+      "activeSubscriptions": "Aktywne subskrypcje",
+      "monthlyRevenue": "Miesięczny przychód",
+      "pendingInvoices": "Oczekujące faktury"
+    },
+    "staff": {
+      "title": "Zarządzanie personelem",
+      "addStaff": "Dodaj pracownika",
+      "editStaff": "Edytuj pracownika",
+      "roles": {
+        "portal_admin": "Administrator portalu",
+        "support": "Agent wsparcia",
+        "billing_specialist": "Specjalista ds. rozliczeń"
+      },
+      "fullName": "Imię i nazwisko",
+      "email": "Adres email",
+      "role": "Rola",
+      "isActive": "Status aktywności"
+    },
+    "plans": {
+      "title": "Plany subskrypcyjne",
+      "addPlan": "Dodaj plan",
+      "editPlan": "Edytuj plan",
+      "planName": "Nazwa planu",
+      "planNamePl": "Nazwa planu (polski)",
+      "price": "Cena",
+      "currency": "Waluta",
+      "billingCycle": "Okres rozliczeniowy",
+      "monthly": "Miesięcznie",
+      "yearly": "Rocznie",
+      "maxUsers": "Maks. użytkowników",
+      "unlimited": "Nieograniczona",
+      "features": "Funkcje",
+      "isCustom": "Plan niestandardowy",
+      "isActive": "Aktywny"
+    },
+    "settings": {
+      "title": "Ustawienia portalu",
+      "companyName": "Nazwa firmy",
+      "taxResidency": "Rezydencja podatkowa",
+      "vatId": "NIP",
+      "vatRate": "Stawka VAT (%)",
+      "defaultCurrency": "Domyślna waluta",
+      "supportedLanguages": "Obsługiwane języki",
+      "companyAddress": "Adres firmy",
+      "street": "Ulica",
+      "city": "Miasto",
+      "postalCode": "Kod pocztowy",
+      "country": "Kraj"
+    },
+    "organizations": {
+      "title": "Organizacje klientów",
+      "addOrg": "Dodaj organizację",
+      "editOrg": "Edytuj organizację",
+      "orgName": "Nazwa organizacji",
+      "taxId": "NIP",
+      "billingEmail": "Email do rozliczeń",
+      "subscription": "Plan subskrypcyjny",
+      "members": "Członkowie",
+      "viewMembers": "Zobacz członków"
+    },
+    "invoices": {
+      "title": "Faktury",
+      "invoiceNumber": "Nr faktury",
+      "organization": "Organizacja",
+      "amount": "Kwota",
+      "status": "Status",
+      "dueDate": "Termin płatności",
+      "paidAt": "Opłacono",
+      "pending": "Oczekuje",
+      "paid": "Opłacona",
+      "overdue": "Zaległa",
+      "cancelled": "Anulowana"
+    }
+  },
+  "client": {
+    "title": "Panel klienta",
+    "organization": {
+      "title": "Ustawienia organizacji",
+      "name": "Nazwa organizacji",
+      "taxId": "NIP",
+      "billingEmail": "Email do rozliczeń"
+    },
+    "members": {
+      "title": "Członkowie zespołu",
+      "addMember": "Dodaj członka",
+      "roles": {
+        "org_admin": "Administrator",
+        "cfo": "Dyrektor finansowy",
+        "manager": "Menedżer",
+        "viewer": "Przeglądający"
+      }
+    },
+    "subscription": {
+      "title": "Subskrypcja",
+      "currentPlan": "Aktualny plan",
+      "upgrade": "Ulepsz",
+      "downgrade": "Zmniejsz",
+      "manageBilling": "Zarządzaj rozliczeniami"
+    }
+  },
+  "landing": {
+    "hero": {
+      "title": "Inteligentny Controlling Finansowy",
+      "subtitle": "Analizy oparte na AI dla rentowności Twojego biznesu",
+      "cta": "Rozpocznij za darmo"
+    },
+    "features": {
+      "title": "Dlaczego SmartController AI?",
+      "profitAnalysis": "Wykrywanie wycieków zysku",
+      "profitAnalysisDesc": "Zidentyfikuj gdzie tracisz marżę",
+      "benchmarking": "Benchmarking branżowy",
+      "benchmarkingDesc": "Porównaj swoje wskaźniki ze średnią branżową",
+      "aiInsights": "Analizy oparte na AI",
+      "aiInsightsDesc": "Otrzymuj praktyczne rekomendacje"
+    },
+    "pricing": {
+      "title": "Wybierz swój plan",
+      "perMonth": "/miesiąc",
+      "getStarted": "Rozpocznij",
+      "contactSales": "Skontaktuj się"
+    }
+  },
+  "dashboard": {
+    "title": "Panel finansowy",
+    "uploadFile": "Załaduj dane finansowe",
+    "downloadReport": "Pobierz raport PDF",
+    "metrics": {
+      "grossMargin": "Marża brutto",
+      "efficiency": "Efektywność pracownika",
+      "adminBurden": "Obciążenie administracyjne",
+      "cashCycle": "Cykl konwersji gotówki"
+    },
+    "benchmark": {
+      "title": "Benchmark branżowy",
+      "yourResult": "Twój wynik",
+      "industryAvg": "Średnia branżowa",
+      "status": "Status",
+      "good": "Dobry",
+      "alert": "Alert",
+      "neutral": "Neutralny"
+    },
+    "insights": {
+      "title": "Analizy AI",
+      "recommendations": "Rekomendacje"
+    }
+  },
+  "languages": {
+    "en": "Angielski",
+    "pl": "Polski"
+  }
+}

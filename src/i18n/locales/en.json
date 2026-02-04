@@ -1,0 +1,215 @@
+{
+  "common": {
+    "loading": "Loading...",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "add": "Add",
+    "search": "Search",
+    "actions": "Actions",
+    "status": "Status",
+    "active": "Active",
+    "inactive": "Inactive",
+    "yes": "Yes",
+    "no": "No",
+    "confirm": "Confirm",
+    "back": "Back",
+    "next": "Next",
+    "submit": "Submit",
+    "error": "Error",
+    "success": "Success",
+    "warning": "Warning",
+    "close": "Close",
+    "created": "Created",
+    "updated": "Updated",
+    "name": "Name",
+    "email": "Email",
+    "role": "Role",
+    "language": "Language",
+    "settings": "Settings",
+    "logout": "Logout",
+    "login": "Login",
+    "register": "Register"
+  },
+  "nav": {
+    "home": "Home",
+    "dashboard": "Dashboard",
+    "admin": "Admin Portal",
+    "clients": "Clients",
+    "plans": "Subscription Plans",
+    "staff": "Staff Management",
+    "portalSettings": "Portal Settings",
+    "organizations": "Organizations",
+    "invoices": "Invoices",
+    "features": "Feature Modules"
+  },
+  "auth": {
+    "signIn": "Sign In",
+    "signUp": "Sign Up",
+    "signOut": "Sign Out",
+    "emailPlaceholder": "Enter your email",
+    "passwordPlaceholder": "Enter your password",
+    "forgotPassword": "Forgot Password?",
+    "noAccount": "Don't have an account?",
+    "hasAccount": "Already have an account?",
+    "welcomeBack": "Welcome back",
+    "createAccount": "Create your account"
+  },
+  "admin": {
+    "title": "Admin Portal",
+    "subtitle": "Manage your platform, clients, and subscriptions",
+    "dashboard": {
+      "title": "Overview",
+      "totalClients": "Total Clients",
+      "activeSubscriptions": "Active Subscriptions",
+      "monthlyRevenue": "Monthly Revenue",
+      "pendingInvoices": "Pending Invoices"
+    },
+    "staff": {
+      "title": "Staff Management",
+      "addStaff": "Add Staff Member",
+      "editStaff": "Edit Staff Member",
+      "roles": {
+        "portal_admin": "Portal Administrator",
+        "support": "Support Agent",
+        "billing_specialist": "Billing Specialist"
+      },
+      "fullName": "Full Name",
+      "email": "Email Address",
+      "role": "Role",
+      "isActive": "Active Status"
+    },
+    "plans": {
+      "title": "Subscription Plans",
+      "addPlan": "Add Plan",
+      "editPlan": "Edit Plan",
+      "planName": "Plan Name",
+      "planNamePl": "Plan Name (Polish)",
+      "price": "Price",
+      "currency": "Currency",
+      "billingCycle": "Billing Cycle",
+      "monthly": "Monthly",
+      "yearly": "Yearly",
+      "maxUsers": "Max Users",
+      "unlimited": "Unlimited",
+      "features": "Features",
+      "isCustom": "Custom Plan",
+      "isActive": "Active"
+    },
+    "settings": {
+      "title": "Portal Settings",
+      "companyName": "Company Name",
+      "taxResidency": "Tax Residency",
+      "vatId": "VAT ID",
+      "vatRate": "VAT Rate (%)",
+      "defaultCurrency": "Default Currency",
+      "supportedLanguages": "Supported Languages",
+      "companyAddress": "Company Address",
+      "street": "Street",
+      "city": "City",
+      "postalCode": "Postal Code",
+      "country": "Country"
+    },
+    "organizations": {
+      "title": "Client Organizations",
+      "addOrg": "Add Organization",
+      "editOrg": "Edit Organization",
+      "orgName": "Organization Name",
+      "taxId": "Tax ID",
+      "billingEmail": "Billing Email",
+      "subscription": "Subscription Plan",
+      "members": "Members",
+      "viewMembers": "View Members"
+    },
+    "invoices": {
+      "title": "Invoices",
+      "invoiceNumber": "Invoice #",
+      "organization": "Organization",
+      "amount": "Amount",
+      "status": "Status",
+      "dueDate": "Due Date",
+      "paidAt": "Paid At",
+      "pending": "Pending",
+      "paid": "Paid",
+      "overdue": "Overdue",
+      "cancelled": "Cancelled"
+    }
+  },
+  "client": {
+    "title": "Client Dashboard",
+    "organization": {
+      "title": "Organization Settings",
+      "name": "Organization Name",
+      "taxId": "Tax ID",
+      "billingEmail": "Billing Email"
+    },
+    "members": {
+      "title": "Team Members",
+      "addMember": "Add Member",
+      "roles": {
+        "org_admin": "Administrator",
+        "cfo": "CFO",
+        "manager": "Manager",
+        "viewer": "Viewer"
+      }
+    },
+    "subscription": {
+      "title": "Subscription",
+      "currentPlan": "Current Plan",
+      "upgrade": "Upgrade",
+      "downgrade": "Downgrade",
+      "manageBilling": "Manage Billing"
+    }
+  },
+  "landing": {
+    "hero": {
+      "title": "Smart Financial Controlling",
+      "subtitle": "AI-powered insights for your business profitability",
+      "cta": "Get Started Free"
+    },
+    "features": {
+      "title": "Why Choose SmartController AI?",
+      "profitAnalysis": "Profit Leakage Detection",
+      "profitAnalysisDesc": "Identify where your margins are leaking",
+      "benchmarking": "Industry Benchmarking",
+      "benchmarkingDesc": "Compare your metrics with industry averages",
+      "aiInsights": "AI-Powered Insights",
+      "aiInsightsDesc": "Get actionable recommendations"
+    },
+    "pricing": {
+      "title": "Choose Your Plan",
+      "perMonth": "/month",
+      "getStarted": "Get Started",
+      "contactSales": "Contact Sales"
+    }
+  },
+  "dashboard": {
+    "title": "Financial Dashboard",
+    "uploadFile": "Upload Financial Data",
+    "downloadReport": "Download PDF Report",
+    "metrics": {
+      "grossMargin": "Gross Margin",
+      "efficiency": "Employee Efficiency",
+      "adminBurden": "Administrative Burden",
+      "cashCycle": "Cash Conversion Cycle"
+    },
+    "benchmark": {
+      "title": "Industry Benchmark",
+      "yourResult": "Your Result",
+      "industryAvg": "Industry Average",
+      "status": "Status",
+      "good": "Good",
+      "alert": "Alert",
+      "neutral": "Neutral"
+    },
+    "insights": {
+      "title": "AI Insights",
+      "recommendations": "Recommendations"
+    }
+  },
+  "languages": {
+    "en": "English",
+    "pl": "Polish"
+  }
+}
