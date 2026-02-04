@@ -30,7 +30,9 @@
     "settings": "Settings",
     "logout": "Logout",
     "login": "Login",
-    "register": "Register"
+    "register": "Register",
+    "month": "month",
+    "year": "year"
   },
   "nav": {
     "home": "Home",
@@ -137,16 +139,52 @@
     }
   },
   "client": {
-    "title": "Client Dashboard",
+    "title": "Client Portal",
+    "nav": {
+      "dashboard": "Dashboard",
+      "analytics": "Analytics",
+      "reports": "Reports",
+      "team": "Team",
+      "invoices": "Invoices",
+      "subscription": "Subscription",
+      "orgSettings": "Settings"
+    },
+    "dashboard": {
+      "title": "Dashboard",
+      "subtitle": "Overview of your organization's financial health",
+      "teamSize": "Team Size",
+      "pendingInvoices": "Pending Invoices",
+      "activeFeatures": "Active Features",
+      "manageTeam": "Add and manage team members",
+      "viewTeam": "Manage Team",
+      "viewReports": "View financial reports and insights",
+      "openReports": "View Reports",
+      "pendingPayments": "{{count}} pending payment(s)",
+      "allPaid": "All invoices paid",
+      "viewInvoices": "View Invoices"
+    },
     "organization": {
       "title": "Organization Settings",
+      "subtitle": "Manage your organization's profile and preferences",
+      "basicInfo": "Basic Information",
+      "editDescription": "Update your organization details",
+      "viewOnly": "Contact your administrator to make changes",
       "name": "Organization Name",
-      "taxId": "Tax ID",
-      "billingEmail": "Billing Email"
+      "taxId": "Tax ID / NIP",
+      "billingEmail": "Billing Email",
+      "language": "Preferred Language"
     },
     "members": {
       "title": "Team Members",
+      "subtitle": "Manage your organization's team",
       "addMember": "Add Member",
+      "addDescription": "Invite a new team member to your organization",
+      "fullName": "Full Name",
+      "teamList": "Team Directory",
+      "teamCount": "{{count}} active member(s)",
+      "noMembers": "No team members yet",
+      "changeRole": "Change Role",
+      "remove": "Remove Member",
       "roles": {
         "org_admin": "Administrator",
         "cfo": "CFO",
@@ -156,10 +194,43 @@
     },
     "subscription": {
       "title": "Subscription",
+      "subtitle": "Manage your subscription plan and billing",
       "currentPlan": "Current Plan",
+      "currentDescription": "Your active subscription details",
+      "price": "Price",
+      "maxUsers": "Max Users",
+      "features": "Features",
+      "availablePlans": "Available Plans",
+      "current": "Current",
       "upgrade": "Upgrade",
       "downgrade": "Downgrade",
-      "manageBilling": "Manage Billing"
+      "manageBilling": "Manage Billing",
+      "moreFeatures": "more features"
+    },
+    "invoices": {
+      "subtitle": "View and download your invoices",
+      "list": "Invoice History",
+      "totalCount": "{{count}} invoice(s)",
+      "noInvoices": "No invoices yet",
+      "period": "Period"
+    },
+    "analytics": {
+      "subtitle": "Financial analytics and insights",
+      "dashboardTitle": "Analytics Dashboard",
+      "dashboardDescription": "View your financial metrics and trends",
+      "placeholder": "Analytics charts will appear here"
+    },
+    "reports": {
+      "subtitle": "Financial reports and analysis",
+      "title": "Financial Reports",
+      "description": "Generate and view financial reports",
+      "placeholder": "Reports will appear here"
+    },
+    "features": {
+      "locked": "Feature Locked",
+      "upgradeMessage": "Upgrade your plan to access {{feature}}",
+      "currentPlan": "Current plan",
+      "noPlan": "No plan"
     }
   },
   "landing": {
