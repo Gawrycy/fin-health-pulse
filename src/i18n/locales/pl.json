@@ -30,7 +30,9 @@
     "settings": "Ustawienia",
     "logout": "Wyloguj",
     "login": "Zaloguj",
-    "register": "Zarejestruj"
+    "register": "Zarejestruj",
+    "month": "miesiąc",
+    "year": "rok"
   },
   "nav": {
     "home": "Strona główna",
@@ -137,16 +139,52 @@
     }
   },
   "client": {
-    "title": "Panel klienta",
+    "title": "Portal Klienta",
+    "nav": {
+      "dashboard": "Panel",
+      "analytics": "Analityka",
+      "reports": "Raporty",
+      "team": "Zespół",
+      "invoices": "Faktury",
+      "subscription": "Subskrypcja",
+      "orgSettings": "Ustawienia"
+    },
+    "dashboard": {
+      "title": "Panel",
+      "subtitle": "Przegląd kondycji finansowej Twojej organizacji",
+      "teamSize": "Wielkość zespołu",
+      "pendingInvoices": "Oczekujące faktury",
+      "activeFeatures": "Aktywne funkcje",
+      "manageTeam": "Dodaj i zarządzaj członkami zespołu",
+      "viewTeam": "Zarządzaj zespołem",
+      "viewReports": "Zobacz raporty i analizy finansowe",
+      "openReports": "Zobacz raporty",
+      "pendingPayments": "{{count}} oczekujących płatności",
+      "allPaid": "Wszystkie faktury opłacone",
+      "viewInvoices": "Zobacz faktury"
+    },
     "organization": {
       "title": "Ustawienia organizacji",
+      "subtitle": "Zarządzaj profilem i preferencjami organizacji",
+      "basicInfo": "Podstawowe informacje",
+      "editDescription": "Zaktualizuj dane organizacji",
+      "viewOnly": "Skontaktuj się z administratorem, aby wprowadzić zmiany",
       "name": "Nazwa organizacji",
       "taxId": "NIP",
-      "billingEmail": "Email do rozliczeń"
+      "billingEmail": "Email do rozliczeń",
+      "language": "Preferowany język"
     },
     "members": {
       "title": "Członkowie zespołu",
+      "subtitle": "Zarządzaj zespołem organizacji",
       "addMember": "Dodaj członka",
+      "addDescription": "Zaproś nowego członka do organizacji",
+      "fullName": "Imię i nazwisko",
+      "teamList": "Lista zespołu",
+      "teamCount": "{{count}} aktywnych członków",
+      "noMembers": "Brak członków zespołu",
+      "changeRole": "Zmień rolę",
+      "remove": "Usuń członka",
       "roles": {
         "org_admin": "Administrator",
         "cfo": "Dyrektor finansowy",
@@ -156,10 +194,43 @@
     },
     "subscription": {
       "title": "Subskrypcja",
+      "subtitle": "Zarządzaj planem subskrypcji i rozliczeniami",
       "currentPlan": "Aktualny plan",
+      "currentDescription": "Szczegóły aktywnej subskrypcji",
+      "price": "Cena",
+      "maxUsers": "Maks. użytkowników",
+      "features": "Funkcje",
+      "availablePlans": "Dostępne plany",
+      "current": "Aktualny",
       "upgrade": "Ulepsz",
       "downgrade": "Zmniejsz",
-      "manageBilling": "Zarządzaj rozliczeniami"
+      "manageBilling": "Zarządzaj rozliczeniami",
+      "moreFeatures": "więcej funkcji"
+    },
+    "invoices": {
+      "subtitle": "Przeglądaj i pobieraj faktury",
+      "list": "Historia faktur",
+      "totalCount": "{{count}} faktur",
+      "noInvoices": "Brak faktur",
+      "period": "Okres"
+    },
+    "analytics": {
+      "subtitle": "Analityka i wglądy finansowe",
+      "dashboardTitle": "Panel analityczny",
+      "dashboardDescription": "Zobacz metryki i trendy finansowe",
+      "placeholder": "Wykresy analityczne pojawią się tutaj"
+    },
+    "reports": {
+      "subtitle": "Raporty i analizy finansowe",
+      "title": "Raporty finansowe",
+      "description": "Generuj i przeglądaj raporty finansowe",
+      "placeholder": "Raporty pojawią się tutaj"
+    },
+    "features": {
+      "locked": "Funkcja zablokowana",
+      "upgradeMessage": "Ulepsz plan, aby uzyskać dostęp do {{feature}}",
+      "currentPlan": "Aktualny plan",
+      "noPlan": "Brak planu"
     }
   },
   "landing": {
