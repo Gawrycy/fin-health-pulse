@@ -1,22 +1,46 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { BarChart3, Menu, X } from "lucide-react";
+import { useTranslation } from "react-i18next";
+import { BarChart3, Menu, X, Shield } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { supabase } from "@/integrations/supabase/client";
 import type { User } from "@supabase/supabase-js";
 
 export function Navbar() {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const [user, setUser] = useState<User | null>(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isPortalStaff, setIsPortalStaff] = useState(false);
 
   useEffect(() => {
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((_, session) => {
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(async (_, session) => {
       setUser(session?.user ?? null);
+      if (session?.user) {
+        const { data } = await supabase
+          .from('portal_staff')
+          .select('id')
+          .eq('user_id', session.user.id)
+          .eq('is_active', true)
+          .maybeSingle();
+        setIsPortalStaff(!!data);
+      } else {
+        setIsPortalStaff(false);
+      }
     });
 
-    supabase.auth.getSession().then(({ data: { session } }) => {
+    supabase.auth.getSession().then(async ({ data: { session } }) => {
       setUser(session?.user ?? null);
+      if (session?.user) {
+        const { data } = await supabase
+          .from('portal_staff')
+          .select('id')
+          .eq('user_id', session.user.id)
+          .eq('is_active', true)
+          .maybeSingle();
+        setIsPortalStaff(!!data);
+      }
     });
 
     return () => subscription.unsubscribe();
@@ -40,39 +64,49 @@ export function Navbar() {
           </Link>
 
           {/* Desktop nav */}
-          <div className="hidden md:flex items-center gap-6">
+          <div className="hidden md:flex items-center gap-4">
             <Link to="/" className="text-sm text-white/70 hover:text-white transition-colors">
-              Strona główna
+              {t('nav.home')}
             </Link>
             <a href="#pricing" className="text-sm text-white/70 hover:text-white transition-colors">
-              Cennik
+              {t('landing.pricing.title')}
             </a>
             
+            <LanguageSwitcher />
+            
             {user ? (
-              <div className="flex items-center gap-4">
+              <div className="flex items-center gap-3">
                 <Link to="/dashboard">
                   <Button variant="ghost" className="text-white hover:bg-white/10">
-                    Dashboard
+                    {t('nav.dashboard')}
                   </Button>
                 </Link>
+                {isPortalStaff && (
+                  <Link to="/admin">
+                    <Button variant="ghost" className="text-white hover:bg-white/10 gap-1">
+                      <Shield className="h-4 w-4" />
+                      {t('nav.admin')}
+                    </Button>
+                  </Link>
+                )}
                 <Button
                   onClick={handleLogout}
                   variant="outline"
                   className="border-white/30 text-white hover:bg-white/10"
                 >
-                  Wyloguj
+                  {t('common.logout')}
                 </Button>
               </div>
             ) : (
               <div className="flex items-center gap-3">
                 <Link to="/auth">
                   <Button variant="ghost" className="text-white hover:bg-white/10">
-                    Zaloguj się
+                    {t('auth.signIn')}
                   </Button>
                 </Link>
                 <Link to="/auth">
                   <Button className="bg-emerald-500 hover:bg-emerald-600 text-white">
-                    Darmowe konto
+                    {t('auth.signUp')}
                   </Button>
                 </Link>
               </div>
@@ -97,15 +131,18 @@ export function Navbar() {
                 className="text-white/70 hover:text-white transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Strona główna
+                {t('nav.home')}
               </Link>
               <a
                 href="#pricing"
                 className="text-white/70 hover:text-white transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Cennik
+                {t('landing.pricing.title')}
               </a>
+              <div className="py-2">
+                <LanguageSwitcher />
+              </div>
               {user ? (
                 <>
                   <Link
@@ -113,8 +150,18 @@ export function Navbar() {
                     className="text-white/70 hover:text-white transition-colors"
                     onClick={() => setIsMenuOpen(false)}
                   >
-                    Dashboard
+                    {t('nav.dashboard')}
                   </Link>
+                  {isPortalStaff && (
+                    <Link
+                      to="/admin"
+                      className="text-white/70 hover:text-white transition-colors flex items-center gap-2"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      <Shield className="h-4 w-4" />
+                      {t('nav.admin')}
+                    </Link>
+                  )}
                   <Button
                     onClick={() => {
                       handleLogout();
@@ -123,13 +170,13 @@ export function Navbar() {
                     variant="outline"
                     className="border-white/30 text-white hover:bg-white/10 w-fit"
                   >
-                    Wyloguj
+                    {t('common.logout')}
                   </Button>
                 </>
               ) : (
                 <Link to="/auth" onClick={() => setIsMenuOpen(false)}>
                   <Button className="bg-emerald-500 hover:bg-emerald-600 text-white">
-                    Zaloguj się
+                    {t('auth.signIn')}
                   </Button>
                 </Link>
               )}

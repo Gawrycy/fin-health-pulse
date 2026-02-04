@@ -14,6 +14,39 @@ export type Database = {
   }
   public: {
     Tables: {
+      feature_modules: {
+        Row: {
+          code: string
+          created_at: string | null
+          description: string | null
+          description_pl: string | null
+          id: string
+          is_active: boolean | null
+          name: string
+          name_pl: string
+        }
+        Insert: {
+          code: string
+          created_at?: string | null
+          description?: string | null
+          description_pl?: string | null
+          id?: string
+          is_active?: boolean | null
+          name: string
+          name_pl: string
+        }
+        Update: {
+          code?: string
+          created_at?: string | null
+          description?: string | null
+          description_pl?: string | null
+          id?: string
+          is_active?: boolean | null
+          name?: string
+          name_pl?: string
+        }
+        Relationships: []
+      }
       financial_reports: {
         Row: {
           accounts_payable: number
@@ -89,6 +122,228 @@ export type Database = {
         }
         Relationships: []
       }
+      invoices: {
+        Row: {
+          amount: number
+          billing_period_end: string | null
+          billing_period_start: string | null
+          created_at: string | null
+          currency: string | null
+          due_date: string | null
+          id: string
+          invoice_number: string
+          organization_id: string
+          paid_at: string | null
+          pdf_url: string | null
+          status: string | null
+          tax_amount: number | null
+          tax_details: Json | null
+        }
+        Insert: {
+          amount: number
+          billing_period_end?: string | null
+          billing_period_start?: string | null
+          created_at?: string | null
+          currency?: string | null
+          due_date?: string | null
+          id?: string
+          invoice_number: string
+          organization_id: string
+          paid_at?: string | null
+          pdf_url?: string | null
+          status?: string | null
+          tax_amount?: number | null
+          tax_details?: Json | null
+        }
+        Update: {
+          amount?: number
+          billing_period_end?: string | null
+          billing_period_start?: string | null
+          created_at?: string | null
+          currency?: string | null
+          due_date?: string | null
+          id?: string
+          invoice_number?: string
+          organization_id?: string
+          paid_at?: string | null
+          pdf_url?: string | null
+          status?: string | null
+          tax_amount?: number | null
+          tax_details?: Json | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "invoices_organization_id_fkey"
+            columns: ["organization_id"]
+            isOneToOne: false
+            referencedRelation: "organizations"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      organization_members: {
+        Row: {
+          created_at: string | null
+          email: string
+          full_name: string | null
+          id: string
+          is_active: boolean | null
+          organization_id: string
+          role: Database["public"]["Enums"]["organization_role"]
+          updated_at: string | null
+          user_id: string
+        }
+        Insert: {
+          created_at?: string | null
+          email: string
+          full_name?: string | null
+          id?: string
+          is_active?: boolean | null
+          organization_id: string
+          role?: Database["public"]["Enums"]["organization_role"]
+          updated_at?: string | null
+          user_id: string
+        }
+        Update: {
+          created_at?: string | null
+          email?: string
+          full_name?: string | null
+          id?: string
+          is_active?: boolean | null
+          organization_id?: string
+          role?: Database["public"]["Enums"]["organization_role"]
+          updated_at?: string | null
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "organization_members_organization_id_fkey"
+            columns: ["organization_id"]
+            isOneToOne: false
+            referencedRelation: "organizations"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      organizations: {
+        Row: {
+          billing_address: Json | null
+          billing_email: string | null
+          created_at: string | null
+          custom_features: Json | null
+          id: string
+          name: string
+          preferred_language: string | null
+          subscription_plan_id: string | null
+          tax_id: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          billing_address?: Json | null
+          billing_email?: string | null
+          created_at?: string | null
+          custom_features?: Json | null
+          id?: string
+          name: string
+          preferred_language?: string | null
+          subscription_plan_id?: string | null
+          tax_id?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          billing_address?: Json | null
+          billing_email?: string | null
+          created_at?: string | null
+          custom_features?: Json | null
+          id?: string
+          name?: string
+          preferred_language?: string | null
+          subscription_plan_id?: string | null
+          tax_id?: string | null
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "fk_subscription_plan"
+            columns: ["subscription_plan_id"]
+            isOneToOne: false
+            referencedRelation: "subscription_plans"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      portal_settings: {
+        Row: {
+          company_address: Json | null
+          company_name: string | null
+          created_at: string | null
+          currency: string | null
+          id: string
+          owner_tax_residency: string | null
+          supported_languages: string[] | null
+          updated_at: string | null
+          vat_id: string | null
+          vat_rate: number | null
+        }
+        Insert: {
+          company_address?: Json | null
+          company_name?: string | null
+          created_at?: string | null
+          currency?: string | null
+          id?: string
+          owner_tax_residency?: string | null
+          supported_languages?: string[] | null
+          updated_at?: string | null
+          vat_id?: string | null
+          vat_rate?: number | null
+        }
+        Update: {
+          company_address?: Json | null
+          company_name?: string | null
+          created_at?: string | null
+          currency?: string | null
+          id?: string
+          owner_tax_residency?: string | null
+          supported_languages?: string[] | null
+          updated_at?: string | null
+          vat_id?: string | null
+          vat_rate?: number | null
+        }
+        Relationships: []
+      }
+      portal_staff: {
+        Row: {
+          created_at: string | null
+          email: string
+          full_name: string | null
+          id: string
+          is_active: boolean | null
+          role: Database["public"]["Enums"]["portal_role"]
+          updated_at: string | null
+          user_id: string
+        }
+        Insert: {
+          created_at?: string | null
+          email: string
+          full_name?: string | null
+          id?: string
+          is_active?: boolean | null
+          role?: Database["public"]["Enums"]["portal_role"]
+          updated_at?: string | null
+          user_id: string
+        }
+        Update: {
+          created_at?: string | null
+          email?: string
+          full_name?: string | null
+          id?: string
+          is_active?: boolean | null
+          role?: Database["public"]["Enums"]["portal_role"]
+          updated_at?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           company_name: string | null
@@ -128,15 +383,69 @@ export type Database = {
         }
         Relationships: []
       }
+      subscription_plans: {
+        Row: {
+          billing_cycle: string | null
+          created_at: string | null
+          currency: string | null
+          features_list: Json | null
+          id: string
+          is_active: boolean | null
+          is_custom: boolean | null
+          max_users: number | null
+          name: string
+          name_pl: string
+          price: number
+          updated_at: string | null
+        }
+        Insert: {
+          billing_cycle?: string | null
+          created_at?: string | null
+          currency?: string | null
+          features_list?: Json | null
+          id?: string
+          is_active?: boolean | null
+          is_custom?: boolean | null
+          max_users?: number | null
+          name: string
+          name_pl: string
+          price?: number
+          updated_at?: string | null
+        }
+        Update: {
+          billing_cycle?: string | null
+          created_at?: string | null
+          currency?: string | null
+          features_list?: Json | null
+          id?: string
+          is_active?: boolean | null
+          is_custom?: boolean | null
+          max_users?: number | null
+          name?: string
+          name_pl?: string
+          price?: number
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      get_user_org_role: {
+        Args: { _user_id: string }
+        Returns: Database["public"]["Enums"]["organization_role"]
+      }
+      get_user_organization: { Args: { _user_id: string }; Returns: string }
+      is_org_admin: { Args: { _user_id: string }; Returns: boolean }
+      is_portal_admin: { Args: { _user_id: string }; Returns: boolean }
+      is_portal_staff: { Args: { _user_id: string }; Returns: boolean }
     }
     Enums: {
       industry_type: "manufacturing" | "it_services" | "ecommerce"
+      organization_role: "org_admin" | "cfo" | "manager" | "viewer"
+      portal_role: "portal_admin" | "support" | "billing_specialist"
       subscription_tier: "free" | "starter" | "pro"
     }
     CompositeTypes: {
@@ -266,6 +575,8 @@ export const Constants = {
   public: {
     Enums: {
       industry_type: ["manufacturing", "it_services", "ecommerce"],
+      organization_role: ["org_admin", "cfo", "manager", "viewer"],
+      portal_role: ["portal_admin", "support", "billing_specialist"],
       subscription_tier: ["free", "starter", "pro"],
     },
   },
