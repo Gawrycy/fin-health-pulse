@@ -22,6 +22,7 @@
     "warning": "Warning",
     "close": "Close",
     "created": "Created",
+    "deleted": "Deleted",
     "updated": "Updated",
     "name": "Name",
     "email": "Email",
@@ -136,6 +137,22 @@
       "paid": "Paid",
       "overdue": "Overdue",
       "cancelled": "Cancelled"
+    },
+    "features": {
+      "subtitle": "Manage available feature modules for subscription plans",
+      "addModule": "Add Module",
+      "editModule": "Edit Module",
+      "moduleName": "Module Name",
+      "moduleNamePl": "Module Name (Polish)",
+      "moduleCode": "Module Code",
+      "codeHint": "Unique identifier used in code (auto-generated if empty)",
+      "description": "Description",
+      "descriptionPl": "Description (Polish)",
+      "activeByDefault": "Active by default",
+      "noModules": "No feature modules configured",
+      "addFirst": "Add your first module",
+      "deleteConfirmTitle": "Delete Feature Module?",
+      "deleteConfirmDescription": "This will remove the module from all subscription plans. This action cannot be undone."
     }
   },
   "client": {

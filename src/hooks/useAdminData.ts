@@ -204,6 +204,94 @@ export function useFeatureModules() {
   });
 }
 
+export function useCreateFeatureModule() {
+  const queryClient = useQueryClient();
+  const { t } = useTranslation();
+
+  return useMutation({
+    mutationFn: async (module: {
+      name: string;
+      name_pl: string;
+      code: string;
+      description?: string;
+      description_pl?: string;
+      is_active?: boolean;
+    }) => {
+      const { data, error } = await supabase
+        .from('feature_modules')
+        .insert([module])
+        .select()
+        .single();
+      
+      if (error) throw error;
+      return data;
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['feature-modules'] });
+      toast.success(t('common.success'));
+    },
+    onError: (error) => {
+      toast.error(error.message);
+    },
+  });
+}
+
+export function useUpdateFeatureModule() {
+  const queryClient = useQueryClient();
+  const { t } = useTranslation();
+
+  return useMutation({
+    mutationFn: async ({ id, ...module }: { id: string } & Partial<{
+      name: string;
+      name_pl: string;
+      code: string;
+      description: string;
+      description_pl: string;
+      is_active: boolean;
+    }>) => {
+      const { data, error } = await supabase
+        .from('feature_modules')
+        .update(module)
+        .eq('id', id)
+        .select()
+        .single();
+      
+      if (error) throw error;
+      return data;
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['feature-modules'] });
+      toast.success(t('common.updated'));
+    },
+    onError: (error) => {
+      toast.error(error.message);
+    },
+  });
+}
+
+export function useDeleteFeatureModule() {
+  const queryClient = useQueryClient();
+  const { t } = useTranslation();
+
+  return useMutation({
+    mutationFn: async (id: string) => {
+      const { error } = await supabase
+        .from('feature_modules')
+        .delete()
+        .eq('id', id);
+      
+      if (error) throw error;
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['feature-modules'] });
+      toast.success(t('common.deleted'));
+    },
+    onError: (error) => {
+      toast.error(error.message);
+    },
+  });
+}
+
 // Invoices
 export function useInvoices() {
   return useQuery({

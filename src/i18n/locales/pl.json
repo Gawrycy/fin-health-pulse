@@ -22,6 +22,7 @@
     "warning": "Ostrzeżenie",
     "close": "Zamknij",
     "created": "Utworzono",
+    "deleted": "Usunięto",
     "updated": "Zaktualizowano",
     "name": "Nazwa",
     "email": "Email",
@@ -136,6 +137,22 @@
       "paid": "Opłacona",
       "overdue": "Zaległa",
       "cancelled": "Anulowana"
+    },
+    "features": {
+      "subtitle": "Zarządzaj dostępnymi modułami funkcjonalnymi dla planów subskrypcji",
+      "addModule": "Dodaj moduł",
+      "editModule": "Edytuj moduł",
+      "moduleName": "Nazwa modułu",
+      "moduleNamePl": "Nazwa modułu (polski)",
+      "moduleCode": "Kod modułu",
+      "codeHint": "Unikalny identyfikator używany w kodzie (automatycznie generowany jeśli pusty)",
+      "description": "Opis",
+      "descriptionPl": "Opis (polski)",
+      "activeByDefault": "Aktywny domyślnie",
+      "noModules": "Brak skonfigurowanych modułów",
+      "addFirst": "Dodaj pierwszy moduł",
+      "deleteConfirmTitle": "Usunąć moduł funkcjonalny?",
+      "deleteConfirmDescription": "Moduł zostanie usunięty ze wszystkich planów subskrypcji. Tej operacji nie można cofnąć."
     }
   },
   "client": {
