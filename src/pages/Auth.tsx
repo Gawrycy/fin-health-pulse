@@ -8,6 +8,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import { Alert, AlertDescription } from "@/components/ui/alert";
+import { useAuth } from "@/hooks/useAuth";
 
 const DEMO_ACCOUNTS = [
   { email: "andrzej.juchta@gmail.com", password: "testpassword1", label: "Admin", role: "Portal Administrator" },
@@ -17,6 +18,7 @@ const DEMO_ACCOUNTS = [
 export default function Auth() {
   const navigate = useNavigate();
   const { toast } = useToast();
+  const { user, loading, roles } = useAuth();
   const [isLoading, setIsLoading] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -25,51 +27,17 @@ export default function Auth() {
   const [resetEmail, setResetEmail] = useState("");
 
   useEffect(() => {
-    const checkAndRedirect = async (userId: string) => {
-      // Check portal staff role first
-      const { data: staffData } = await supabase
-        .from("portal_staff")
-        .select("role")
-        .eq("user_id", userId)
-        .eq("is_active", true)
-        .maybeSingle();
+    if (loading) return;
+    if (!user) return;
 
-      if (staffData) {
-        navigate("/admin");
-        return;
-      }
-
-      // Check org membership
-      const { data: memberData } = await supabase
-        .from("organization_members")
-        .select("role")
-        .eq("user_id", userId)
-        .eq("is_active", true)
-        .maybeSingle();
-
-      if (memberData) {
-        navigate("/client");
-        return;
-      }
-
-      // Default fallback
+    if (roles.isPortalStaff) {
+      navigate("/admin");
+    } else if (roles.organizationId) {
+      navigate("/client");
+    } else {
       navigate("/dashboard");
-    };
-
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
-      if (session) {
-        checkAndRedirect(session.user.id);
-      }
-    });
-
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      if (session) {
-        checkAndRedirect(session.user.id);
-      }
-    });
-
-    return () => subscription.unsubscribe();
-  }, [navigate]);
+    }
+  }, [user, loading, roles, navigate]);
 
   const handleSignIn = async (e: React.FormEvent) => {
     e.preventDefault();

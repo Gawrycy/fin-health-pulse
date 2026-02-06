@@ -46,21 +46,26 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const fetchRoles = async (userId: string) => {
     try {
+      console.log("fetchRoles called for:", userId);
       // Check portal staff role
-      const { data: staffData } = await supabase
+      const { data: staffData, error: staffError } = await supabase
         .from('portal_staff')
         .select('role, is_active')
         .eq('user_id', userId)
         .eq('is_active', true)
         .maybeSingle();
 
+      console.log("staffData:", staffData, "staffError:", staffError);
+
       // Check organization membership
-      const { data: memberData } = await supabase
+      const { data: memberData, error: memberError } = await supabase
         .from('organization_members')
         .select('organization_id, role, is_active')
         .eq('user_id', userId)
         .eq('is_active', true)
         .maybeSingle();
+
+      console.log("memberData:", memberData, "memberError:", memberError);
 
       setRoles({
         isPortalStaff: !!staffData,
