@@ -43,6 +43,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
   const [roles, setRoles] = useState<UserRole>(defaultRoles);
+  const [rolesLoaded, setRolesLoaded] = useState(false);
 
   const fetchRoles = async (userId: string) => {
     try {
@@ -78,6 +79,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     } catch (error) {
       console.error('Error fetching user roles:', error);
       setRoles(defaultRoles);
+    } finally {
+      setRolesLoaded(true);
+      setLoading(false);
     }
   };
 
@@ -91,6 +95,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     await supabase.auth.signOut();
     setUser(null);
     setRoles(defaultRoles);
+    setRolesLoaded(false);
   };
 
   useEffect(() => {
@@ -99,25 +104,37 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       setUser(session?.user ?? null);
       if (session?.user) {
         fetchRoles(session.user.id);
+      } else {
+        setLoading(false);
       }
-      setLoading(false);
     });
 
-    // Listen for auth changes
+    // Listen for auth changes - DO NOT make API calls directly inside this callback
+    // as it can cause deadlocks with the Supabase client
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
-      async (event, session) => {
+      (event, session) => {
         setUser(session?.user ?? null);
-        if (session?.user) {
-          await fetchRoles(session.user.id);
-        } else {
+        if (!session?.user) {
           setRoles(defaultRoles);
+          setRolesLoaded(false);
+          setLoading(false);
+        } else {
+          // Keep loading=true; fetchRoles effect will set it to false
+          setLoading(true);
+          setRolesLoaded(false);
         }
-        setLoading(false);
       }
     );
 
     return () => subscription.unsubscribe();
   }, []);
+
+  // Fetch roles whenever user changes, decoupled from auth callback
+  useEffect(() => {
+    if (user) {
+      fetchRoles(user.id);
+    }
+  }, [user?.id]);
 
   return (
     <AuthContext.Provider value={{ user, loading, roles, signOut, refreshRoles }}>
