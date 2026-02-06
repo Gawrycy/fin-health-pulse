@@ -29,11 +29,11 @@ export default function ProtectedRoute({
   }
 
   if (requirePortalStaff && !roles.isPortalStaff) {
-    return <Navigate to="/auth" replace />;
+    return <Navigate to="/unauthorized" replace />;
   }
 
   if (requireOrganization && !roles.organizationId) {
-    return <Navigate to="/auth" replace />;
+    return <Navigate to="/unauthorized" replace />;
   }
 
   return <>{children}</>;
